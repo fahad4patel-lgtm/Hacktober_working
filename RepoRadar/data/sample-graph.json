@@ -1,0 +1,110 @@
+{
+  "name": "Sample Commerce App",
+  "nodes": [
+    {
+      "id": "src/server.js",
+      "label": "server.js",
+      "type": "file",
+      "description": "Express application entry point",
+      "path": "src/server.js"
+    },
+    {
+      "id": "src/routes/orders.js",
+      "label": "orders.js",
+      "type": "file",
+      "description": "Order API routes",
+      "path": "src/routes/orders.js"
+    },
+    {
+      "id": "src/controllers/orderController.js",
+      "label": "orderController.js",
+      "type": "file",
+      "description": "Handles incoming order requests",
+      "path": "src/controllers/orderController.js"
+    },
+    {
+      "id": "src/services/orderService.js",
+      "label": "orderService.js",
+      "type": "file",
+      "description": "Order business logic",
+      "path": "src/services/orderService.js"
+    },
+    {
+      "id": "src/repositories/orderRepository.js",
+      "label": "orderRepository.js",
+      "type": "file",
+      "description": "Order database queries",
+      "path": "src/repositories/orderRepository.js"
+    },
+    {
+      "id": "src/db/connection.js",
+      "label": "connection.js",
+      "type": "file",
+      "description": "Creates database connection pool",
+      "path": "src/db/connection.js"
+    },
+    {
+      "id": "src/config/env.js",
+      "label": "env.js",
+      "type": "file",
+      "description": "Loads environment config",
+      "path": "src/config/env.js"
+    },
+    {
+      "id": "src/services/paymentService.js",
+      "label": "paymentService.js",
+      "type": "file",
+      "description": "Payment processing",
+      "path": "src/services/paymentService.js"
+    },
+    {
+      "id": "tests/orderService.test.js",
+      "label": "orderService.test.js",
+      "type": "test",
+      "description": "Tests order service",
+      "path": "tests/orderService.test.js"
+    }
+  ],
+  "edges": [
+    {
+      "source": "src/server.js",
+      "target": "src/routes/orders.js",
+      "label": "registers route"
+    },
+    {
+      "source": "src/routes/orders.js",
+      "target": "src/controllers/orderController.js",
+      "label": "calls"
+    },
+    {
+      "source": "src/controllers/orderController.js",
+      "target": "src/services/orderService.js",
+      "label": "calls"
+    },
+    {
+      "source": "src/services/orderService.js",
+      "target": "src/repositories/orderRepository.js",
+      "label": "uses"
+    },
+    {
+      "source": "src/repositories/orderRepository.js",
+      "target": "src/db/connection.js",
+      "label": "imports"
+    },
+    {
+      "source": "src/db/connection.js",
+      "target": "src/config/env.js",
+      "label": "reads config"
+    },
+    {
+      "source": "src/services/orderService.js",
+      "target": "src/services/paymentService.js",
+      "label": "calls"
+    },
+    {
+      "source": "tests/orderService.test.js",
+      "target": "src/services/orderService.js",
+      "label": "tests"
+    }
+  ]
+}
